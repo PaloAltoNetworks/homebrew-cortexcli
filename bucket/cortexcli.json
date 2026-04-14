@@ -1,0 +1,30 @@
+{
+    "version": "0.18.0",
+    "description": "Palo Alto Networks Cortex unified CLI for Workloads, APIs and Code scanning",
+    "homepage": "https://docs-cortex.paloaltonetworks.com/",
+    "license": {
+        "identifier": "Proprietary",
+        "url": "https://www.paloaltonetworks.com/legal-notices/terms-of-use"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/PaloAltoNetworks/homebrew-cortexcli/releases/download/v0.18.0/cortexcli-v0.18.0-windows-amd64.zip",
+            "hash": "1deb48934cc8db57f00405895a885d74b31e0362e60864c44afafb3e6dcd4eda"
+        }
+    },
+    "bin": "cortexcli.exe",
+    "checkver": {
+        "github": "https://github.com/PaloAltoNetworks/homebrew-cortexcli"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/PaloAltoNetworks/homebrew-cortexcli/releases/download/v$version/cortexcli-v$version-windows-amd64.zip"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/PaloAltoNetworks/homebrew-cortexcli/releases/download/v$version/SHA256SUMS",
+            "regex": "$sha256\\s+$basename"
+        }
+    }
+}
