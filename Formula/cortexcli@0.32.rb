@@ -1,13 +1,10 @@
-class Cortexcli < Formula
-  desc "Palo Alto Networks Cortex unified CLI for Workloads, APIs and Code scanning"
+class CortexcliAT032 < Formula
+  desc "Palo Alto Networks Cortex unified CLI (pinned 0.32.x)"
   homepage "https://docs-cortex.paloaltonetworks.com/"
   version "0.32.0"
   license :cannot_represent
 
-  livecheck do
-    url :stable
-    strategy :github_latest
-  end
+  keg_only :versioned_formula
 
   on_macos do
     on_arm do
@@ -33,8 +30,6 @@ class Cortexcli < Formula
 
   def install
     bin.install "cortexcli"
-    # Binary is codesigned but not yet notarized; strip the quarantine xattr
-    # that Homebrew's downloader adds. Remove once notarization is in CI.
     system "/usr/bin/xattr", "-dr", "com.apple.quarantine", bin/"cortexcli" if OS.mac?
   end
 
