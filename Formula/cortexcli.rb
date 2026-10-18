@@ -1,40 +1,44 @@
 class Cortexcli < Formula
-  desc "Palo Alto Networks Cortex unified CLI for Workloads, APIs and Code scanning"
+  desc "Cortex CLI"
   homepage "https://docs-cortex.paloaltonetworks.com/"
-  version "0.37.0"
+  version "0.78.0"
   license :cannot_represent
+
+  on_macos do
+    on_arm do
+      url "https://github.com/PaloAltoNetworks/homebrew-cortexcli/releases/download/v0.78.0/cortexcli-0.78.0-darwin-arm64.tar.gz"
+      sha256 "60f3cdf16d8ff58ab18d8be854b004cbc9f3838c926917be72078433da329e1d"
+    end
+    on_intel do
+      url "https://github.com/PaloAltoNetworks/homebrew-cortexcli/releases/download/v0.78.0/cortexcli-0.78.0-darwin-amd64.tar.gz"
+      sha256 "8aadbf990c7acade445c51c5804757839f47d3308805cf29a18740254c46c799"
+    end
+  end
+
+  on_linux do
+    on_arm do
+      url "https://github.com/PaloAltoNetworks/homebrew-cortexcli/releases/download/v0.78.0/cortexcli-0.78.0-linux-arm64.tar.gz"
+      sha256 "f6cac1a9085209ef60fd04480c774b2439d3d1fed0dc809433891f6b4ffdcfd2"
+    end
+    on_intel do
+      url "https://github.com/PaloAltoNetworks/homebrew-cortexcli/releases/download/v0.78.0/cortexcli-0.78.0-linux-amd64.tar.gz"
+      sha256 "67a8db79dfd76ff97dea25b94cfdbf4db1fb1f9d34f63ec948d06d60e2318c96"
+    end
+  end
 
   livecheck do
     url :stable
     strategy :github_latest
   end
 
-  on_macos do
-    on_arm do
-      url "https://github.com/PaloAltoNetworks/homebrew-cortexcli/releases/download/v0.37.0/cortexcli-v0.37.0-darwin-arm64.tar.gz"
-      sha256 "42b723698ad63000695692a324205c29f10d7ffb8156f43511bc990de1039fc8"
-    end
-    on_intel do
-      url "https://github.com/PaloAltoNetworks/homebrew-cortexcli/releases/download/v0.37.0/cortexcli-v0.37.0-darwin-amd64.tar.gz"
-      sha256 "c54e4a13dd189ed211d5b9ba94ba8f278174bc6764d74ec29839df5da0db4b00"
-    end
-  end
-
-  on_linux do
-    on_arm do
-      url "https://github.com/PaloAltoNetworks/homebrew-cortexcli/releases/download/v0.37.0/cortexcli-v0.37.0-linux-arm64.tar.gz"
-      sha256 "af5ea783a1afe30af23a353b1a1ee5fbee0f31f1c75fd98bbc0cd5bdc9f205c9"
-    end
-    on_intel do
-      url "https://github.com/PaloAltoNetworks/homebrew-cortexcli/releases/download/v0.37.0/cortexcli-v0.37.0-linux-amd64.tar.gz"
-      sha256 "ca2c8233a0d2864a6d2853fd8a4e2ee219ac242ee617dc6de15d9c7c42af9a8b"
-    end
-  end
-
   def install
-    bin.install "cortexcli"
-    # Binary is codesigned but not yet notarized; strip the quarantine xattr
-    # that Homebrew's downloader adds. Remove once notarization is in CI.
+    if OS.mac?
+      system "/usr/bin/xar", "-xf", "cortexcli.pkg"
+      system "/bin/sh", "-c", "/usr/bin/gunzip -dc Payload | /usr/bin/cpio -idm"
+      bin.install "cortexcli"
+    else
+      bin.install "cortexcli"
+    end
     system "/usr/bin/xattr", "-dr", "com.apple.quarantine", bin/"cortexcli" if OS.mac?
   end
 
