@@ -1,28 +1,28 @@
 class Cortexcli < Formula
   desc "Cortex CLI"
   homepage "https://docs-cortex.paloaltonetworks.com/"
-  version "0.78.0"
+  version "0.85.0"
   license :cannot_represent
 
   on_macos do
     on_arm do
-      url "https://github.com/PaloAltoNetworks/homebrew-cortexcli/releases/download/v0.78.0/cortexcli-0.78.0-darwin-arm64.tar.gz"
-      sha256 "60f3cdf16d8ff58ab18d8be854b004cbc9f3838c926917be72078433da329e1d"
+      url "https://github.com/PaloAltoNetworks/homebrew-cortexcli/releases/download/v0.85.0/cortexcli-0.85.0-darwin-arm64.tar.gz"
+      sha256 "450ce6f96b90ebebb01e92e509bf67a08a4dabba005ae36026a28a5eb6197384"
     end
     on_intel do
-      url "https://github.com/PaloAltoNetworks/homebrew-cortexcli/releases/download/v0.78.0/cortexcli-0.78.0-darwin-amd64.tar.gz"
-      sha256 "8aadbf990c7acade445c51c5804757839f47d3308805cf29a18740254c46c799"
+      url "https://github.com/PaloAltoNetworks/homebrew-cortexcli/releases/download/v0.85.0/cortexcli-0.85.0-darwin-amd64.tar.gz"
+      sha256 "734e7a6bc77fdb73fb415a7b841080d9cbeb6dbc01a7c7efeb098362cac276f1"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/PaloAltoNetworks/homebrew-cortexcli/releases/download/v0.78.0/cortexcli-0.78.0-linux-arm64.tar.gz"
-      sha256 "f6cac1a9085209ef60fd04480c774b2439d3d1fed0dc809433891f6b4ffdcfd2"
+      url "https://github.com/PaloAltoNetworks/homebrew-cortexcli/releases/download/v0.85.0/cortexcli-0.85.0-linux-arm64.tar.gz"
+      sha256 "a1b541fb6b904556aff87920ff6fbf113080ff631b6bd7d6ac24605233ea514b"
     end
     on_intel do
-      url "https://github.com/PaloAltoNetworks/homebrew-cortexcli/releases/download/v0.78.0/cortexcli-0.78.0-linux-amd64.tar.gz"
-      sha256 "67a8db79dfd76ff97dea25b94cfdbf4db1fb1f9d34f63ec948d06d60e2318c96"
+      url "https://github.com/PaloAltoNetworks/homebrew-cortexcli/releases/download/v0.85.0/cortexcli-0.85.0-linux-amd64.tar.gz"
+      sha256 "1c58e921ea7f1f84ce5547a3570d68de676cfd7af076cb99e9ecc0093f5a8ffd"
     end
   end
 
